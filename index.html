@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <title>Progress & Perfection — Hope for the Struggle, Strength for the Day</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <!-- Keep all existing styles exactly as-is -->
+
+    <style>
+        :root {
+            --bg: #0a0a0a;
+            --surface: #141414;
+            --surface-hover: #1a1a1a;
+            --text: #f0f0f0;
+            --text-secondary: #a0a0a0;
+            --accent: #e75c5c;
+            --accent-glow: rgba(108, 92, 231, 0.15);
+            --green: #00D26A;
+            --border: #222;
+            --radius: 12px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'DM Sans', -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* TOP BAR */
+        .top-bar {
+            padding: 16px 24px;
+            text-align: center;
+            background: var(--accent);
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: 0.02em;
+        }
+        .top-bar span {
+            opacity: 0.95;
+        }
+
+        /* HERO */
+        .hero {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 72px 24px 48px;
+            text-align: center;
+        }
+
+        .logo-mark {
+            display: inline-block;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 15px;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 32px;
+            padding: 6px 14px;
+            border: 1px solid rgba(108, 92, 231, 0.3);
+            border-radius: 6px;
+        }
+
+        h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(36px, 6vw, 56px);
+            font-weight: 700;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            margin-bottom: 20px;
+        }
+
+        .subheading {
+            font-size: 20px;
+            color: var(--text-secondary);
+            max-width: 540px;
+            margin: 0 auto 12px;
+            line-height: 1.55;
+        }
+
+        .subheading-detail {
+            font-size: 16px;
+            color: var(--text-secondary);
+            max-width: 520px;
+            margin: 0 auto 16px;
+            line-height: 1.55;
+            opacity: 0.8;
+        }
+
+        .proof-line {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-top: 8px;
+            opacity: 0.7;
+        }
+        .proof-line strong {
+            color: var(--text);
+            opacity: 1;
+        }
+
+        /* VSL VIDEO */
+        .vsl-section {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 0 24px 56px;
+        }
+
+        .loom-wrapper {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%;
+            border-radius: var(--radius);
+            overflow: hidden;
+        }
+
+        .loom-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: var(--radius);
+        }
+
+        .video-label {
+            text-align: center;
+            margin-top: 12px;
+            font-size: 13px;
+            color: var(--text-secondary);
+            opacity: 0.6;
+        }
+
+        /* HOW IT WORKS */
+        .how-section {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 0 24px 64px;
+        }
+
+        .section-label {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 16px;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 12px;
+        }
+
+        .how-section h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 32px;
+            letter-spacing: -0.01em;
+        }
+
+        .steps {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .step {
+            display: flex;
+            gap: 16px;
+            padding: 20px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            transition: border-color 0.2s;
+        }
+
+        .step:hover {
+            border-color: rgba(108, 92, 231, 0.3);
+        }
+
+        .step-number {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--accent);
+            min-width: 28px;
+            height: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--accent-glow);
+            border-radius: 6px;
+            flex-shrink: 0;
+        }
+
+        .step-content h3 {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .step-content p {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        .step-time {
+            font-size: 12px;
+            color: var(--accent);
+            font-weight: 500;
+            margin-top: 4px;
+        }
+
+        /* WHO FOR / NOT FOR */
+        .for-section {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 0 24px 64px;
+        }
+
+        .for-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        @media (max-width: 560px) {
+            .for-grid { grid-template-columns: 1fr; }
+        }
+
+        .for-card {
+            padding: 24px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+        }
+
+        .for-card.yes {
+            border-color: rgba(0, 210, 106, 0.25);
+        }
+
+        .for-card.no {
+            border-color: rgba(255, 100, 100, 0.2);
+        }
+
+        .for-card h3 {
+            font-size: 15px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .for-card.yes h3 {
+            color: var(--green);
+        }
+
+        .for-card.no h3 {
+            color: #ff6464;
+        }
+
+        .for-card p {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.5;
+            padding: 5px 0;
+            padding-left: 16px;
+            position: relative;
+        }
+
+        .for-card.yes p::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--green);
+            font-weight: 700;
+            font-size: 12px;
+        }
+
+        .for-card.no p::before {
+            content: '✗';
+            position: absolute;
+            left: 0;
+            color: #ff6464;
+            font-weight: 700;
+            font-size: 12px;
+        }
+
+        /* WHY ME */
+        .why-section {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 0 24px 64px;
+        }
+
+        .why-card {
+            display: flex;
+            gap: 20px;
+            padding: 24px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            align-items: flex-start;
+        }
+
+        @media (max-width: 560px) {
+            .why-card { flex-direction: column; }
+        }
+
+        .why-avatar {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent), #8B7CF7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .why-text p {
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .why-text strong {
+            color: var(--text);
+        }
+
+        /* PRICING */
+        .pricing-section {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 0 24px 48px;
+            text-align: center;
+        }
+
+        .pricing-section h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .pricing-section .sub {
+            color: var(--text-secondary);
+            font-size: 15px;
+            margin-bottom: 32px;
+        }
+
+        .pricing-cards {
+            display: flex;
+            justify-content: center;
+        }
+
+        .pricing-card {
+            padding: 32px 28px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            text-align: left;
+            position: relative;
+            max-width: 440px;
+            width: 100%;
+        }
+
+        .pricing-card.featured {
+            border-color: var(--accent);
+            box-shadow: 0 0 30px var(--accent-glow);
+        }
+
+        .card-badge {
+            position: absolute;
+            top: -10px;
+            right: 16px;
+            background: var(--accent);
+            color: white;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            padding: 3px 10px;
+            border-radius: 4px;
+        }
+
+        .card-price {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 44px;
+            font-weight: 700;
+            line-height: 1;
+            margin-bottom: 4px;
+        }
+
+        .card-price span {
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--text-secondary);
+        }
+
+        .card-note {
+            font-size: 13px;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+        }
+
+        .card-features {
+            list-style: none;
+            margin-bottom: 20px;
+        }
+
+        .card-features li {
+            font-size: 14px;
+            color: var(--text-secondary);
+            padding: 6px 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+        }
+
+        .card-features li::before {
+            content: '✓';
+            color: var(--green);
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .card-guarantee {
+            font-size: 13px;
+            color: var(--green);
+            font-weight: 500;
+            margin-bottom: 20px;
+            padding-top: 14px;
+            border-top: 1px solid var(--border);
+        }
+
+        .cta-button {
+            display: block;
+            width: 100%;
+            padding: 14px 24px;
+            background: var(--accent);
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 700;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.15s, box-shadow 0.15s;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 20px var(--accent-glow);
+        }
+
+        /* GUARANTEE */
+        .guarantee {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 0 24px 64px;
+            text-align: center;
+        }
+
+        .guarantee-box {
+            padding: 28px 32px;
+            background: rgba(0, 210, 106, 0.04);
+            border: 1px solid rgba(0, 210, 106, 0.15);
+            border-radius: var(--radius);
+        }
+
+        .guarantee-box h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 18px;
+            margin-bottom: 8px;
+            color: var(--green);
+        }
+
+        .guarantee-box p {
+            font-size: 15px;
+            color: var(--text-secondary);
+            max-width: 480px;
+            margin: 0 auto;
+            line-height: 1.55;
+        }
+
+        /* FINAL CTA */
+        .final-cta {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 0 24px 64px;
+            text-align: center;
+        }
+
+        .final-cta h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .final-cta p {
+            color: var(--text-secondary);
+            font-size: 16px;
+            margin-bottom: 24px;
+        }
+
+        .final-cta .cta-button {
+            display: inline-block;
+            width: auto;
+            padding: 16px 48px;
+            font-size: 16px;
+        }
+
+        .contact-line {
+            margin-top: 16px;
+            font-size: 13px;
+            color: var(--text-secondary);
+            opacity: 0.6;
+        }
+
+        .contact-line a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        /* FOOTER */
+        footer {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 32px 24px;
+            text-align: center;
+            border-top: 1px solid var(--border);
+        }
+
+        footer p {
+            font-size: 13px;
+            color: var(--text-secondary);
+            opacity: 0.5;
+        }
+        /* SCROLL ANIMATIONS */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- TOP BAR -->
+    <div class="top-bar">
+        <span>Daily scripture-based reflections for faith, recovery, and surrender</span>
+    </div>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="logo-mark">Progress & Perfection</div>
+        <h1>Recovery themed.<br>Christian flavored.</h1>
+        <p class="subheading">Daily reflections on addiction and recovery.</p>
+        <p class="subheading-detail">
+            For Christians navigating addiction, perfectionism, burnout, or quiet internal battles.
+        </p>
+        <p class="proof-line">
+            <strong>Faith-driven. Recovery-informed. One day at a time.</strong>
+        </p>
+    </section>
+
+    <!-- VIDEO PLACEHOLDER -->
+    <section class="vsl-section fade-up">
+        <div class="loom-wrapper">
+            <!-- Replace with real video later -->
+            <iframe src="https://www.youtube.com/embed/Jv0PK3gpLaA?si=NeFsErdXrmMP_1rU  "
+                frameborder="0"
+                allowfullscreen>
+            </iframe>
+        </div>
+        <p class="video-label">Short introduction — what this is and who it's for</p>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="how-section fade-up">
+        <p class="section-label">What This Is</p>
+        <h2>A Simple Daily Structure</h2>
+        <div class="steps">
+            <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <h3>A Short, Memorable Title</h3>
+                    <p>Like Moby Dick, I've titled all of the 500+ daily reflections I've written. Honesty, wit and sarcasm included.</p>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <h3>Scripture (ESV)</h3>
+                    <p>Yes, I've got everything anchored in Scripture. No, I'm not a scholar. Yes, I've probably taken something out of context here and there. No, I didn't mean to.</p>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <h3>Honest Reflection</h3>
+                    <p>These are my own reflections on the past two+ decades of my life. They're brief, don't worry. They're poignant (sometimes).</p>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">4</div>
+                <div class="step-content">
+                    <h3>Action Steps</h3>
+                    <p>Reflection is great; action is better. Beginning in 2026, we've begun a year-long memory challenge. One verse every week. It's actually pretty fun. Come check it out.</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-number">5</div>
+                <div class="step-content">
+                    <h3>The Book</h3>
+                    <p>After the first few months of publication, I figured this could become a book. And now it has. Get yourself a copy here.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHO IT'S FOR -->
+    <section class="for-section fade-up">
+        <div class="for-grid">
+            <div class="for-card yes">
+                <h3>This is for you if:</h3>
+                <p>Struggling with addiction or other self-centered patterns</p>
+                <p>You feel stuck in cycles of guilt, perfectionism, or hidden hypocrisy</p>
+                <p>You want a Christ-centered approach to recovery and personal growth</p>
+                <p>You're curious about Christianity</p>
+                <p>You know someone struggling with addiction and are seeking understanding</p>
+                <p>You're bored with 12-step literature and need a fresh take</p>
+            </div>
+
+            <div class="for-card no">
+                <h3>This is NOT for you if:</h3>
+                <p>You're looking for generic self-help without Scripture</p>
+                <p>You want motivation without repentance or surrender</p>
+                <p>You believe recovery is only for “other people”</p>
+                <p>You're unwilling to examine your own self-centered patterns</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHY THIS EXISTS -->
+    <section class="why-section fade-up">
+        <p class="section-label">Why This Exists</p>
+        <div class="why-card">
+            <div class="why-avatar">P&P</div>
+            <div class="why-text">
+                <p>
+                    I started writing this because I wanted to share bits of my own experience, strength and hope with both 12 step programs and my Christian faith. It took me a number of years in recovery to fully step back into my childhood faith. This is the daily reflection that would have been great to have in my early recovery days when I was jaded enough to not pick up the Bible but willing enough to sprinkle in some Christianity to my program.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CALL TO ACTION -->
+    <section class="pricing-section fade-up">
+        <p class="section-label">Get the Book</p>
+        <h2>366 Daily Reflections</h2>
+        <p class="sub">Ships from Amazon</p>
+        
+        <div class="pricing-cards">
+            <div class="pricing-card featured">
+                <p class="card-price">$19.99</p>
+                <p class="card-note">The book version of the first year's worth of daily reflections.</p>
+                <ul class="card-features">
+                    <li>Daily scripture-backed reflections</li>
+                    <li>Faith-driven recovery insights</li>
+                    <li>Practical themes for daily surrender</li>
+                    <li>Encouragement for families and church leaders</li>
+                </ul>
+                <a href="https://amzlink.to/az09dXr0ZI3pD" class="cta-button">
+                    Get the book now →
+                </a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- FINAL CTA -->
+    <section class="final-cta fade-up">
+        <p class="section-label">Email list</p>
+        <h2>Progress & Perfection.</h2>
+        <p>The free community. Get a free 7 Day Reflections PDF below 👇</p>
+        <a href="https://www.progressandperfection.com/7-days-of-reflections" class="cta-button">
+            Free reflections PDF →
+        </a>
+    </section>
+
+    <footer>
+        <p>© 2026 Progress & Perfection. All rights reserved.</p>
+    </footer>
+
+    <!-- Keep existing scroll animation script -->
+
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15 });
+
+        document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
